@@ -24,11 +24,12 @@ const checkCarPayload = (req, res, next) => {
   try {
     let fields = ["vin", "make", "model", "mileage"];
     let missedFields = [];
-    for (let i = 0; i < fields; i++) {
+    for (let i = 0; i < fields.length; i++) {
       if (req.body[fields[i]] === undefined) {
         missedFields.push(fields[i]);
       }
     }
+
     if (missedFields.length > 0) {
       res
         .status(400)
